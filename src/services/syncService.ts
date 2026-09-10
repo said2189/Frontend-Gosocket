@@ -26,7 +26,8 @@ export const syncPendingSolicitudes = async () => {
       await axios.post(API_URL, {
         name: sol.name,
         type: sol.type,
-        payload: processedPayload
+        payload: processedPayload,
+        groupId: sol.groupId || null
       });
 
       await db.solicitudes.update(sol.id, { status: 'Processed' });

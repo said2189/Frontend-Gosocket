@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { db } from '../db/db';
-import { processPayload } from './payloadProcessors';
 import { v4 as uuidv4 } from 'uuid';
 
 const API_URL = 'https://localhost:7066/Solicitudes';
@@ -20,13 +19,11 @@ export const syncPendingSolicitudes = async () => {
 
   for (const sol of toSync) {
     try {
-
-      const processedPayload = processPayload(sol.type, sol.payload);
-
+    
       await axios.post(API_URL, {
         name: sol.name,
         type: sol.type,
-        payload: processedPayload,
+        payload: sol.payload,
         groupId: sol.groupId || null
       });
 

@@ -1,75 +1,38 @@
-# React + TypeScript + Vite
+# 📱 Documentación del Frontend — Aplicación Offline-First
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web moderna desarrollada con **React 19**, **TypeScript** y **Vite**, diseñada bajo un sólido enfoque **offline-first**. Permite la creación, gestión y persistencia local de solicitudes sin depender de la red, sincronizándolas de forma totalmente transparente con la API backend en **.NET 8** tan pronto como se restablece la conexión a Internet.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Tecnologías Utilizadas
 
-## React Compiler
+* **React 19** + **TypeScript**
+* **Vite** *(Build Tool & Dev Server)*
+* **Dexie.js** *(Wrapper sobre IndexedDB para la persistencia de datos local)*
+* **Tailwind CSS** *(Framework de estilos UI)*
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ⚡ Prerrequisitos
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Antes de iniciar el proyecto, asegúrate de contar con el siguiente entorno instalado:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* **Node.js:** v24.0
+* **npm:** Gestor de paquetes incluido con Node.js
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🚀 Pasos de Instalación y Configuración
 
-```
+Para enlazar la aplicación con el servicio backend en .NET, debes verificar el puerto en el que corre tu API local y ajustar el punto de enlace.
+1. Abre el archivo: src/services/syncService.ts
+2. En la Línea 5, actualiza la constante API_URL asegurándote de colocar el puerto correcto configurado en tu backend
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+### 1. Instalar dependencias
+Clona el repositorio, navega a la carpeta del proyecto y ejecuta:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+bash
+npm install
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+## Ejecutar en Entorno de Desarrollo
+npm run dev
